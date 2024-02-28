@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Створюємо об'єкт бази даних
+        Base base = new Base();
+
+        // Додаємо студентів до бази даних
+        base.addStudent(new Student("John", 1));
+        base.addStudent(new Student("Alice", 2));
+        base.addStudent(new Student("Bob", 3));
+
+        // Виводимо всіх студентів з бази даних
+        List<Student> students = base.getStudents();
+        for (Student student : students) {
+            System.out.println("Name: " + student.getName() + ", ID: " + student.getId());
+        }
+    }
+}
+
+class Base {
+    private List<Student> students;
+
+    public Base() {
+        this.students = new ArrayList<>();
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        this.students.remove(student);
+    }
+
+    public List<Student> getStudents() {
+        return this.students;
+    }
+}
+
+class Student {
+    private String name;
+    private int id;
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+}
